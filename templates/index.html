@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h1>Записи в блоге</h1>
+{% for item in jobs %}
+<h3>Action # {{ item.id }}</h3>
+<div class="table_container">
+
+    <table class="my_table">
+
+        <tr class="my_row">
+            <td class="title" width="500px" bgcolor="#dddddd">
+                Title of activity
+            </td>
+            <td class="title" width="200px" bgcolor="#dddddd">
+                Team leader
+            </td>
+            <td class="title" width="200px" bgcolor="#dddddd">
+                Duration
+            </td>
+            <td class="title" width="500px" bgcolor="#dddddd">
+                List of collaborators
+            </td>
+            <td class="title" width="200px" bgcolor="#dddddd">
+                Is finished
+            </td>
+        </tr>
+        <tr class="my_row">
+            <td class="ordinary" width="700px" bgcolor="#eeeeff">
+                {{ item.job }}
+            </td>
+            <td class="ordinary" width="250px" bgcolor="#eeeeff">
+                {{ users[item.team_leader] }}
+            </td>
+            <td class="ordinary" width="200px" bgcolor="#eeeeff">
+                {{ item.work_size }} hours
+            </td>
+            <td class="ordinary" width="200px" bgcolor="#eeeeff">
+                {{ item.collaborators }}
+            </td>
+
+            {% if item.is_finished %}
+                <td class="ordinary" width="200px" bgcolor="#eeffff">
+                    Is finished
+                </td>
+            {% else %}
+                <td class="ordinary" width="200px" bgcolor="#ffeeff">
+                    Is not finished
+                </td>
+            {% endif %}
+        </tr>
+
+    </table>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
